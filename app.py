@@ -21,7 +21,7 @@ def predict_performance(gender, ethnicity, parental_level_of_education, lunch,
     pred_df = data.get_data_as_data_frame()
     predict_pipeline = PredictPipeline()
     result = predict_pipeline.predict(pred_df)
-    return f"Predicted Math Score: {result[0]:.2f}"
+    return f"Predicted Math Score: {float(result[0])}"
 
 # Create Gradio interface
 demo = gr.Interface(
@@ -40,4 +40,4 @@ demo = gr.Interface(
     description="Predict the math score of a student based on background and test scores."
 )
 
-demo.launch()
+demo.launch(share = True, ssr_mode= False)
